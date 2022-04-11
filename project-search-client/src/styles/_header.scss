@@ -1,0 +1,168 @@
+@use 'variables';
+@use 'mixins';
+
+.header{
+	@include mixins.default-grid;
+    position: relative;
+	padding: 2.35rem 7.1% 1.25rem;
+	max-width: 90rem;
+	width: 100%;
+	place-self: center center;
+
+    @include mixins.medium-screen{
+		grid-template-columns: minmax(0,1fr) minmax(0,0.95fr);
+	}
+
+	@include mixins.wide-screen{
+		grid-template-columns: minmax(0,1fr) minmax(0,0.8fr);
+	}
+
+	&__link{
+		color: var(--dark-blue);
+	}
+
+	&__heading{
+		font-size: 2rem;
+		font-weight: bold;
+		color: var(--dark-blue);
+		grid-row: 1/2;
+		justify-self: left;
+	}
+}
+
+.toggle{
+	height: 1.5rem;
+	width: 1.75rem;
+	justify-self: right;
+	z-index: 3;
+	border-radius: 0.2rem;
+	padding: 0;
+	background: none;
+	border: none;
+	cursor: pointer;
+	grid-row: 1/2;
+	position: relative;
+
+	@include mixins.medium-screen{
+		display: none;
+	}
+
+	&__bar{
+		position: absolute;
+		width: 100%;
+		height: 3px;
+		background-color: var(--dark-blue);
+		transition: background-color 0.25s ease-in-out, transform 0.25s ease-in-out, top 0.25s ease-in-out;
+
+		&_0{
+			top: 0;
+		}
+		
+		&_1{
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		&_2{
+			bottom: 0;
+		}
+
+		&_0.toggle__bar_open{
+			background-color: var(--light-blue);
+			transform: rotate(-45deg) translateY(-50%);
+			top: 50%;
+		}
+
+		&_1.toggle__bar_open{
+			opacity: 0;
+		}
+
+		&_2.toggle__bar_open{
+			background-color: var(--light-blue);
+			transform: rotate(45deg) translateY(-50%);
+			top: 50%;
+		}
+	}
+
+
+}
+
+.menu{
+	position: fixed;
+	width: 300px;
+	height: 100%;
+	right: -100%;
+	transition: .3s all ease-in;
+	top: 0;
+	z-index: 2;
+	background: whitesmoke;
+	@include mixins.default-grid;
+
+	@include mixins.medium-screen{
+		position: unset;
+		width: unset;
+		opacity: unset;
+		right: unset;
+		top: unset;
+		height: unset;
+		padding: unset;
+		transition: unset;
+		visibility: unset;
+	}
+
+	&__list{
+		margin-top: 8.9rem;
+		@include mixins.default-grid;
+		grid-auto-rows: 4.15rem;
+		justify-content: right;
+		font-size: 1.5rem;
+
+		@include mixins.medium-screen{
+			display: flex;
+			margin-top: unset;
+			font-size: unset;
+			align-items: center;
+            justify-content: space-between;
+            overflow: hidden;
+            width: 100%;
+            max-width: 22rem;
+            margin-left: auto;
+		}
+	}
+
+	&__link{
+		color: var(--light-blue);
+		place-self: center left;
+		font-weight: bold;
+		text-transform: uppercase;
+        transition: color 250ms ease-in-out;
+
+		&:hover{
+			color: var(--dark-blue);
+		}
+	}
+
+	&_open{
+		background: white;
+		width: 19.5rem;
+		opacity: 1;
+		visibility: unset;
+		right: 0;
+
+		@include mixins.landscape{
+			width: 23rem;
+		}
+	}
+
+	&__item{
+		@include mixins.default-grid;
+		padding: 0 3rem;
+
+		@include mixins.medium-screen{
+			display: unset;
+			justify-content: unset;
+			padding-right: unset;
+		}
+		
+	}
+}

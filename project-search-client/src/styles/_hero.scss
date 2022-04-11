@@ -1,0 +1,37 @@
+@use 'variables';
+@use 'mixins';
+
+.hero{
+	@include mixins.default-grid;
+	padding: 0 2rem;
+	margin-top: 1rem;
+	color: var(--dark-blue);
+
+	&__image{
+		@include mixins.default-img;
+		width: 18rem;
+		justify-self: center;
+		border-radius: 0.7rem;
+		margin-bottom: 5rem;
+		box-shadow: 1px 1px 15px 0px rgba(0,0,0,0.75);
+	}
+
+	&__heading{
+		text-align: center;
+		font-size: 3rem;
+		margin: 4rem 0rem 1.5rem;
+		font-weight: bold;
+	}
+
+	&__text{
+		opacity: 0.9;
+		line-height: 1.4;
+		font-size: 1.5rem;
+		text-align: center;
+		margin-bottom: 3.35rem;
+	}
+
+	&__link{
+		font-weight: bold;
+	}
+}

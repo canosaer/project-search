@@ -1,0 +1,43 @@
+@use 'variables';
+@use 'mixins';
+
+.footer{
+    @include mixins.default-grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 3.5rem;
+	border-top: 1px solid lightgray;
+	padding: 2rem 1.5rem;
+	font-size: 0.875rem;
+    align-items: center;
+
+    &__copyright{
+        grid-column: 2/3;
+        place-self: center center;
+        color: #909097;
+        text-align: center;
+    }
+
+    &__social-display{
+        display: flex;
+        grid-column: 3/4;
+        align-items: center;
+        place-self: center right;
+        justify-content: space-between;
+    }
+
+    &__social-icon{
+        background: none;
+        border: none;
+        color: var(--light-blue);
+        font-size: 1.3rem;
+        cursor: pointer;
+
+        &:hover{
+            color: var(--dark-blue);
+        }
+
+        &_email{
+            margin-right: 1rem;
+        }
+    }
+}
